@@ -1,0 +1,77 @@
+flowchart TD
+    subgraph INIT["初始化层"]
+        I1["configparser 读取 config.ini（api_url / api_key / model_name）"]
+        I2["创建 OpenAI client"]
+        I3["定义 TOOLS：11 个工具 schema"]
+    end
+
+    subgraph MAIN["主循环（while True，Ctrl+C 退出）"]
+        M1["input 获取用户输入"]
+        M2["messages.append(user 消息)"]
+        M3["内层循环：chat.completions.create(stream=True, tools=TOOLS)"]
+        M4["遍历流式 chunk"]
+        M5{"delta.content 非空?"}
+        M6["累积 reply + 逐字打印（flush，0.02s 间隔）"]
+        M7{"delta.tool_calls 非空?"}
+        M8["按 index 累积 tool_calls（id / name / arguments）"]
+        M9{"流结束后存在 tool_calls?"}
+        M10["追加 assistant(tool_calls) 消息"]
+        M11["逐个执行工具，追加 role=tool 结果"]
+        M12["追加 assistant(reply)，打印换行"]
+        M13["break 返回外层输入"]
+        M14["except Exception：打印 Error"]
+    end
+
+    subgraph DISPATCH["工具分发层"]
+        D1["run_tool(name, arguments)"]
+        D2["json.loads 解析工具参数"]
+        D3["TOOL_FUNCS 按名称分发"]
+        D4["异常捕获（参数错误/执行失败）回传给模型"]
+    end
+
+    subgraph FS_TOOLS["工具集（11 个）"]
+        T1["getdate：调用本地 date /t 与 time /t 命令"]
+        T2["getcwd：当前工作目录"]
+        T3["listdir：列出目录下文件与子目录"]
+        T4["getfiletype：文件类型（扩展名 + MIME）"]
+        T5["readfile：读取纯文本文件（utf-8/gbk）"]
+        T6["createfile：按目录+文件名创建新文件"]
+        T7["editfile：整文件覆盖编辑内容"]
+        T8["makedir：创建新目录"]
+        T9["removedir：删除目录（非空）"]
+        T10["removefile：删除文件"]
+        T11["rename：重命名文件或目录"]
+    end
+
+    I1 --> I2 --> I3 --> M1
+    M1 --> M2 --> M3
+    M3 --> M4
+    M4 --> M5
+    M5 -- 是 --> M6
+    M5 -- 否 --> M7
+    M6 --> M7
+    M7 -- 是 --> M8
+    M7 -- 否 --> M4
+    M8 --> M4
+    M4 -. 流结束 .-> M9
+    M9 -- 是 --> M10
+    M10 --> M11
+    M11 --> M3
+    M9 -- 否 --> M12
+    M12 --> M13
+    M13 --> M1
+    M3 -. 异常 .-> M14
+    M14 --> M1
+    M11 --> D1
+    D1 --> D2 --> D3 --> D4
+    D3 --> T1
+    D3 --> T2
+    D3 --> T3
+    D3 --> T4
+    D3 --> T5
+    D3 --> T6
+    D3 --> T7
+    D3 --> T8
+    D3 --> T9
+    D3 --> T10
+    D3 --> T11

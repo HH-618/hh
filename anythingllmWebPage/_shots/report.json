@@ -1,0 +1,131 @@
+{
+  "src": "E:\\LLM\\anythingllmWebPage\\AnythingLLM文档上传.html",
+  "url": "file:///E:/LLM/anythingllmWebPage/AnythingLLM%E6%96%87%E6%A1%A3%E4%B8%8A%E4%BC%A0.html",
+  "outdir": "E:\\LLM\\anythingllmWebPage\\_shots",
+  "include": [
+    "lint",
+    "screenshots",
+    "structure"
+  ],
+  "shots": {
+    "desktop": {
+      "screenshot": "E:\\LLM\\anythingllmWebPage\\_shots\\AnythingLLM文档上传_desktop.jpg",
+      "screenshotBytes": 24311,
+      "truncated": false,
+      "structure": {
+        "title": "AnythingLLM 文档上传",
+        "firstH1": "AnythingLLM 文档上传",
+        "viewport": {
+          "w": 1410,
+          "h": 758
+        },
+        "fullpage": {
+          "w": 1410,
+          "h": 758
+        },
+        "counts": {
+          "section": 0,
+          "h1": 1,
+          "h2": 0,
+          "img": 0,
+          "canvas": 0,
+          "svg": 0,
+          "links": 0,
+          "buttons": 1
+        }
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "horizontalOverflow": [],
+      "resourceErrors": [],
+      "reportSource": "cdp"
+    },
+    "mobile": {
+      "screenshot": "E:\\LLM\\anythingllmWebPage\\_shots\\AnythingLLM文档上传_mobile.jpg",
+      "screenshotBytes": 31480,
+      "truncated": false,
+      "structure": {
+        "title": "AnythingLLM 文档上传",
+        "firstH1": "AnythingLLM 文档上传",
+        "viewport": {
+          "w": 492,
+          "h": 702
+        },
+        "fullpage": {
+          "w": 492,
+          "h": 702
+        },
+        "counts": {
+          "section": 0,
+          "h1": 1,
+          "h2": 0,
+          "img": 0,
+          "canvas": 0,
+          "svg": 0,
+          "links": 0,
+          "buttons": 1
+        }
+      },
+      "consoleErrors": [],
+      "consoleWarnings": [],
+      "horizontalOverflow": [],
+      "resourceErrors": [],
+      "reportSource": "cdp"
+    }
+  },
+  "engine": "chrome_cli",
+  "chromiumExec": "C:\\Program Files (x86)\\Microsoft\\Edge\\Application\\msedge.exe",
+  "engineDegraded": true,
+  "engineDegradedReason": "playwright 未装",
+  "elapsedSec": 11.51,
+  "schemaVersion": 2,
+  "status": "pass",
+  "engineInfo": {
+    "name": "chrome_cli",
+    "degraded": true,
+    "degradedReasons": [
+      "playwright 未装"
+    ]
+  },
+  "input": {
+    "original": "E:\\LLM\\anythingllmWebPage\\AnythingLLM文档上传.html",
+    "resolvedPath": "E:\\LLM\\anythingllmWebPage\\AnythingLLM文档上传.html",
+    "baseUrl": "file:///E:/LLM/anythingllmWebPage/AnythingLLM%E6%96%87%E6%A1%A3%E4%B8%8A%E4%BC%A0.html",
+    "protocol": "file",
+    "cwd": "E:\\LLM\\anythingllmWebPage",
+    "mediaMode": {
+      "reducedMotion": true
+    }
+  },
+  "artifacts": {
+    "screenshots": [
+      {
+        "viewport": "desktop",
+        "path": "E:\\LLM\\anythingllmWebPage\\_shots\\AnythingLLM文档上传_desktop.jpg",
+        "size": 24311,
+        "visualCoverage": {
+          "complete": true,
+          "reason": null
+        }
+      },
+      {
+        "viewport": "mobile",
+        "path": "E:\\LLM\\anythingllmWebPage\\_shots\\AnythingLLM文档上传_mobile.jpg",
+        "size": 31480,
+        "visualCoverage": {
+          "complete": true,
+          "reason": null
+        }
+      }
+    ]
+  },
+  "summary": {
+    "blocker": 0,
+    "error": 0,
+    "warning": 0,
+    "info": 0
+  },
+  "findings": [],
+  "prioritizedActions": [],
+  "reportPath": "E:\\LLM\\anythingllmWebPage\\_shots\\report.json"
+}
