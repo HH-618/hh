@@ -1,0 +1,21 @@
+Screen {
+    layout: vertical;
+}
+
+Vertical {
+    height: 1fr;
+    padding: 1 2;
+    layout: vertical;
+}
+
+#log {
+    height: 1fr;
+    border: tall $primary;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+#input {
+    dock: bottom;
+    margin: 1 0 0 0;
+}
