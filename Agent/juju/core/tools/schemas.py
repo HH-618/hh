@@ -149,4 +149,60 @@ def get_tools_schema() -> List[Dict[str, Any]]:
                 },
             },
         },
+        {
+            "type": "function",
+            "function": {
+                "name": "searchweb",
+                "description": "使用百度千帆智能搜索生成 API 搜索互联网，获取最新的网络信息和参考来源。当需要查询实时新闻、最新动态、事实性资料或本地知识无法回答的问题时使用。",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "query": {
+                            "type": "string",
+                            "description": "搜索关键词或需要联网回答的问题",
+                        }
+                    },
+                    "required": ["query"],
+                },
+            },
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "fetchweb",
+                "description": "获取指定网页的主要内容。使用本地 curl 下载网页 HTML，再用 trafilatura 提取正文并转换为 Markdown，保留标题、段落、列表、表格和链接，去除导航栏、广告和页脚。适合读取文章、文档或搜索结果中的网页。",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "url": {
+                            "type": "string",
+                            "description": "要获取的网页完整 URL，必须以 http:// 或 https:// 开头",
+                        }
+                    },
+                    "required": ["url"],
+                },
+            },
+        },
+        {
+            "type": "function",
+            "function": {
+                "name": "RunCli",
+                "description": "执行本地已安装的命令行程序（CLI）。command 是单个程序名称或可执行文件路径，args 是传给程序的参数列表。工具会返回 stdout、stderr 和退出码，可用于运行编译器、解释器、版本控制、系统信息等命令，并根据结果决定下一步操作。",
+                "parameters": {
+                    "type": "object",
+                    "properties": {
+                        "command": {
+                            "type": "string",
+                            "description": "要执行的程序名称或路径，例如 py、git、node、curl 或完整可执行文件路径",
+                        },
+                        "args": {
+                            "type": "array",
+                            "items": {"type": "string"},
+                            "description": "传给程序的参数列表，例如 [\"--version\"] 或 [\"status\", \"--short\"]；没有参数时传空列表 []",
+                        },
+                    },
+                    "required": ["command", "args"],
+                },
+            },
+        },
     ]

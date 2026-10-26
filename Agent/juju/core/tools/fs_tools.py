@@ -4,7 +4,10 @@ import os
 import shutil
 import subprocess
 
+from .cli_tools import RunCli
+from .fetch_tools import fetchweb
 from .schemas import get_tools_schema
+from .search_tools import searchweb
 
 
 TOOLS = get_tools_schema()
@@ -159,6 +162,9 @@ TOOL_FUNCS = {
     "removedir": removedir,
     "removefile": removefile,
     "rename": rename,
+    "searchweb": searchweb,
+    "fetchweb": fetchweb,
+    "RunCli": RunCli,
 }
 
 
